@@ -47,19 +47,35 @@ describe('API: user', () => {
               res.body.should.be.a('object');
               res.body.should.have.property('status').eql(200);
               res.body.should.have.property('message').eql('OK');
+
+              res.body.should.have.property('data');
+              res.body.data.should.be.a('array');
+              done();
+            }
+          });
+    });
+    it('it should fail with not found', (done) => {
+      chai.request(BASE_URL)
+          .get('/api/user2s')
+          .end((err, res) => {
+            if(err) done(err)
+            else {
+              res.should.have.status(404);
+              res.body.should.be.a('object');
+              res.body.should.have.property('status').eql(404);
+              res.body.should.have.property('message').eql('NOT_FOUND');
               done();
             }
           });
     });
   });
   describe('/GET getOne', () => {
-    before(function() {
-      this.skip();
-    });
+    // before(function() {
+    //   this.skip();
+    // });
     it('it should get one user', (done) => {
       chai.request(BASE_URL)
-          .post('/api/v1/users/resendsms')
-          .send({ phone: '+249922281440'})
+          .get('/api/users/123')
           .end((err, res) => {
             if(err) done(err)
             else {
@@ -67,6 +83,9 @@ describe('API: user', () => {
               res.body.should.be.a('object');
               res.body.should.have.property('status').eql(200);
               res.body.should.have.property('message').eql('OK');
+
+              res.body.should.have.property('data');
+              res.body.data.should.be.a('object');
               done();
             }
           });
