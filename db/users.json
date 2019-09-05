@@ -1,0 +1,13 @@
+[
+    {
+        "name": "Abdalla Misbah",
+        "email": "abdalla@masdr.com",
+        "mobileNumber": "249922281440",
+        "password": "123456",
+        "role": 0,
+        "company": {
+            "name": "Masdr co",
+            "address": "Almanshia"
+        }
+    }
+]
